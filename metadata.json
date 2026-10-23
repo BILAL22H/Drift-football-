@@ -1,0 +1,6 @@
+{
+  "name": "Football Cards Challenge",
+  "description": "Interactive football card trivia, 4-card challenges, Ultimate Team squad builder, and daily streak challenges featuring Europe's top 5 leagues.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
