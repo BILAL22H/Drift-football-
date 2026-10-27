@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1526" />
+      <stop offset="50%" stop-color="#08101e" />
+      <stop offset="100%" stop-color="#040810" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded squircle with gold border -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bg)" stroke="url(#gold)" stroke-width="12" />
+
+  <!-- Shield emblem -->
+  <path d="M 256 70 L 410 130 C 410 270 340 375 256 425 C 172 375 102 270 102 130 Z" fill="#0c182c" stroke="url(#gold)" stroke-width="8" />
+
+  <!-- Inner shield green pitch pattern -->
+  <path d="M 256 86 L 396 140 C 396 260 334 358 256 405 C 178 358 116 260 116 140 Z" fill="#08231c" opacity="0.9" />
+
+  <!-- Soccer Ball in center -->
+  <g transform="translate(256, 230)">
+    <!-- Ball Outer Circle -->
+    <circle r="72" fill="#ffffff" stroke="#1e293b" stroke-width="4" />
+    <!-- Pentagons & Panels -->
+    <polygon points="0,-24 22,-8 14,18 -14,18 -22,-8" fill="#0f172a" />
+    <!-- Radiating Panel Lines -->
+    <line x1="0" y1="-24" x2="0" y2="-54" stroke="#0f172a" stroke-width="5" />
+    <line x1="22" y1="-8" x2="50" y2="-20" stroke="#0f172a" stroke-width="5" />
+    <line x1="14" y1="18" x2="38" y2="44" stroke="#0f172a" stroke-width="5" />
+    <line x1="-14" y1="18" x2="-38" y2="44" stroke="#0f172a" stroke-width="5" />
+    <line x1="-22" y1="-8" x2="-50" y2="-20" stroke="#0f172a" stroke-width="5" />
+  </g>
+
+  <!-- Gold Stars at top -->
+  <g fill="url(#gold)" transform="translate(256, 120)">
+    <polygon points="0,-16 5,-5 16,-5 8,3 11,14 0,7 -11,14 -8,3 -16,-5 -5,-5" />
+    <polygon points="-40,-12 -36,-3 -26,-3 -33,4 -31,13 -40,7 -49,13 -47,4 -54,-3 -44,-3" transform="scale(0.75)" />
+    <polygon points="40,-12 44,-3 54,-3 47,4 49,13 40,7 31,13 33,4 26,-3 36,-3" transform="scale(0.75)" />
+  </g>
+
+  <!-- Banner at bottom of shield -->
+  <rect x="140" y="320" width="232" height="44" rx="10" fill="url(#gold)" />
+  <text x="256" y="350" font-family="system-ui, sans-serif" font-size="24" font-weight="900" fill="#070b14" text-anchor="middle" letter-spacing="2">DRAFT</text>
+</svg>

@@ -1,13 +1,33 @@
 @import "tailwindcss";
 
 @layer base {
-  body {
+  :root {
+    --sat: env(safe-area-inset-top, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
+    --sar: env(safe-area-inset-right, 0px);
+  }
+
+  html, body {
     font-family: 'Outfit', sans-serif;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
   }
   
   [dir="rtl"] {
     font-family: 'Cairo', sans-serif;
   }
+}
+
+/* Safe area utilities for Android notches & navigation bars */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .font-teko {

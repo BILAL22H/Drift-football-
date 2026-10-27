@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSettings }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#090e1a]/90 backdrop-blur-md border-b border-white/10 px-3 sm:px-6 py-2.5">
+    <header className="sticky top-0 z-40 bg-[#090e1a]/95 backdrop-blur-md border-b border-white/10 px-3 sm:px-6 pt-[max(0.625rem,env(safe-area-inset-top))] pb-2.5">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
         {/* Brand Logo & Name */}
         <div className="flex items-center gap-2.5">

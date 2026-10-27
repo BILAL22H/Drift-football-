@@ -24,6 +24,31 @@ function MainApp() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { language, t } = useGame();
 
+  // Android back button & navigation integration
+  const switchMode = (mode: GameMode | 'home', pushHistory = true) => {
+    if (pushHistory && mode !== currentMode) {
+      try {
+        window.history.pushState({ mode }, '', '');
+      } catch {
+        // Fallback if history state fails
+      }
+    }
+    setCurrentMode(mode);
+  };
+
+  React.useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      if (e.state && e.state.mode) {
+        setCurrentMode(e.state.mode);
+      } else if (currentMode !== 'home') {
+        setCurrentMode('home');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [currentMode]);
+
   return (
     <div className="min-h-screen flex flex-col bg-[#070b14] text-slate-100 selection:bg-emerald-500 selection:text-black">
       {/* Top Header */}
@@ -32,7 +57,7 @@ function MainApp() {
       {/* Sub Navigation Bar */}
       <div className="sticky top-[53px] z-30 flex items-center bg-[#0a0f1d]/90 backdrop-blur-md border-b border-white/5">
         <button
-          onClick={() => setCurrentMode('home')}
+          onClick={() => switchMode('home')}
           title="Home"
           className={`px-3 py-2 text-xs font-bold font-rajdhani flex items-center gap-1.5 border-r border-white/10 rtl:border-l rtl:border-r-0 transition ${
             currentMode === 'home'
@@ -46,14 +71,14 @@ function MainApp() {
 
         <Navigation
           currentMode={currentMode === 'home' ? 'draft-battle' : currentMode}
-          onSelectMode={(mode) => setCurrentMode(mode)}
+          onSelectMode={(mode) => switchMode(mode)}
         />
       </div>
 
       {/* Dynamic Content Views */}
       <main className="flex-1 pb-16">
         {currentMode === 'home' && (
-          <WelcomeView onSelectMode={(mode) => setCurrentMode(mode)} />
+          <WelcomeView onSelectMode={(mode) => switchMode(mode)} />
         )}
 
         {currentMode === 'draft-battle' && (
@@ -61,7 +86,7 @@ function MainApp() {
         )}
 
         {currentMode === 'guess' && (
-          <ChallengeView onOpenPackStore={() => setCurrentMode('packs')} />
+          <ChallengeView onOpenPackStore={() => switchMode('packs')} />
         )}
 
         {currentMode === 'dream-team' && (
@@ -86,7 +111,7 @@ function MainApp() {
       </main>
 
       {/* Bottom Global Status & European Leagues Footer */}
-      <footer className="border-t border-white/5 bg-[#05080e] py-6 px-4 text-center text-xs text-slate-500">
+      <footer className="border-t border-white/5 bg-[#05080e] pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] px-4 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-base">⚽</span>

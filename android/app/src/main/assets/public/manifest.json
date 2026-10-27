@@ -1,0 +1,27 @@
+{
+  "id": "/",
+  "name": "Football Draft Battle",
+  "short_name": "Draft Battle",
+  "description": "Interactive Football Draft Battle with Europe's Top 5 Leagues and All-Time Icons",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070b14",
+  "theme_color": "#0a0f1d",
+  "categories": ["sports", "games", "entertainment"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
