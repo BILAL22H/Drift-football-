@@ -10,7 +10,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -20,28 +19,22 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build web app
-        run: npm run build
-
-      - name: Install Capacitor
-        run: npm install @capacitor/core @capacitor/android @capacitor/cli
-
-      - name: Add Android platform
-        run: npx cap add android
-
-      - name: Sync Android
-        run: npx cap sync android
-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
 
-      - name: Build APK
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build web app
+        run: npm run build
+
+      - name: Sync existing Android project
+        run: npx cap sync android
+
+      - name: Build debug APK
         run: |
           cd android
           chmod +x gradlew
@@ -52,4 +45,4 @@ jobs:
         with:
           name: Football-Cards-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
-
+          if-no-files-found: error
